@@ -67,11 +67,14 @@ def validate(args):
     transfer=json.loads((tests/'transfer.json').read_text());readonly=json.loads((tests/'readonly.json').read_text())
     assert transfer['passed'] and transfer['case_count']==43 and readonly['passed']
     count=instruction_tests()
+    archive_module=runpy.run_path(str(ROOT/'tests/archive.py'))
+    archive_cases=archive_module['archive_tests']()
     runpy.run_path(str(ROOT/'tests/installer.py'),init_globals={'CONFIG_ARGS':args})
     installer=json.loads((OUT/'installer-verification.json').read_text(encoding='utf-8'));assert installer['passed']
     summary=dict(version=VERSION,passed=True,physical_usb_access=False,driver_installation_executed=False,
                  official_recovery_executed=False,transfer_cases=43,readonly_cases=readonly['case_count'],
                  preflight_cases=4,native_attribute_cases=6,attribute_instruction_cases=count,
+                 archive_range_cases=archive_cases,
                  installer_cases=installer['cases'],binary_audits=audits,process_checks=results,
                  validation_scope='Fake WinUSB transport, DLL export/import inspection, instruction emulation, benign startup stub, and real installer --files-only. No NAND writes or driver changes.',
                  not_tested=['Physical USB communication and flashing in this build','UAC and actual driver binding','Complete v0.2.2 recovery from start to finish'])

@@ -3,6 +3,25 @@ import zipfile
 from common import *
 BUNDLE=OUT/'bundle'
 
+def extract_stored_setup(archive,destination,metadata):
+    """Read the sole M0/stored entry from this exact hash-locked original RAR.
+    The range is locked and its result is independently hashed. No legacy
+    pathname is decoded, and this is deliberately not a general RAR reader.
+    """
+    offset=metadata['setup_offset'];size=metadata['setup_size']
+    if offset<0 or size<=0 or offset+size>archive.stat().st_size:
+        raise ValueError('Stored setup range is outside the locked archive')
+    destination.parent.mkdir(parents=True,exist_ok=True)
+    digest=hashlib.sha256();remaining=size
+    with archive.open('rb') as source,destination.open('wb') as target:
+        source.seek(offset)
+        while remaining:
+            block=source.read(min(1024*1024,remaining))
+            if not block:raise ValueError('Truncated stored setup')
+            target.write(block);digest.update(block);remaining-=len(block)
+    if digest.hexdigest()!=metadata['setup_sha256']:
+        raise ValueError('Original Inno setup checksum mismatch')
+
 def official_archive(args):
     if args.official:
         path=args.official.resolve()
@@ -20,17 +39,8 @@ def bundle(args):
     extracted=CACHE/'official-v1.41';marker=extracted/'verified-extraction.json'
     if not marker.exists():
         extracted.mkdir(parents=True,exist_ok=True)
-        # Do not pick w64devkit's BusyBox tar after the compiler PATH is set.
-        tar=Path(os.environ.get('SystemRoot',r'C:\Windows'))/'System32/tar.exe'
-        if not tar.is_file():raise FileNotFoundError('Windows bsdtar is required to extract the official RAR.')
-        # The locked RAR contains one setup EXE and its directory entry. Its
-        # names use CP936, which English Windows cannot infer. Stream the sole
-        # file directly into an ASCII path, never creating legacy-named paths.
         setup=CACHE/'official-setup.exe'
-        with setup.open('wb') as output:
-            run([tar,'--options','hdrcharset=CP936','-xOf',archive],stdout=output)
-        if sha(setup)!=LOCK['official']['setup_sha256']:
-            raise ValueError('Original Inno setup checksum mismatch')
+        extract_stored_setup(archive,setup,LOCK['official'])
         run([CACHE/'innoextract/innoextract.exe','--extract','--silent','--output-dir',extracted,setup])
     candidates=list(extracted.rglob('super_recover.exe'))
     if len(candidates)!=1:raise ValueError('Expected exactly one official super_recover.exe')
