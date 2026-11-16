@@ -16,7 +16,7 @@ python scripts/build.py all --official C:/Downloads/H1-V141-super-recovery.rar
 
 自定义工具路径：`--cc32`、`--cc64`、`--sevenzip`。默认工具链按锁定清单下载到 `.cache/toolchain/w64devkit`；所有路径以仓库为基准，不依赖当前工作目录、开发者用户名或 SDK 绝对位置。
 
-官方 RAR 中包含一个 Inno 安装程序：脚本先使用系统 tar 解出它，再用锁定的 innoextract 1.9 提取文件，不执行安装程序。构建阶段也只解包 Zadig，按固定偏移、长度和 SHA-256 提取未修改的驱动资源。libwdi DLL 与 CLI 从固定子模块源码编译，UTF-8 入口适配也从本仓库源码编译。构建过程不运行 Zadig，不装驱动，不启动官方恢复程序。
+官方 RAR 中包含一个 Inno 安装程序：脚本先使用系统 tar 显式按 CP936 解码并流式解到 ASCII 文件名，再用锁定的 innoextract 1.9 提取文件，不执行安装程序。构建阶段也只解包 Zadig，按固定偏移、长度和 SHA-256 提取未修改的驱动资源。libwdi DLL 与 CLI 从固定子模块源码编译，UTF-8 入口适配也从本仓库源码编译。构建过程不运行 Zadig，不装驱动，不启动官方恢复程序。
 
 输出：
 
@@ -36,4 +36,4 @@ python scripts/build.py all --official C:/Downloads/H1-V141-super-recovery.rar
 
 首次建仓需要先上传官方原包，因此初始提交可跳过自动 CI；原包归档完成后，在对应版本标签上手动触发同一工作流。后续版本正常推送标签即可。
 
-已有标签和同名资产不会被自动覆盖。0.2.2 的首次开源版本标为预发布，保留日期修正未再次整轮刷机的验证边界。
+已有标签和同名资产不会被自动覆盖。首次开源成品标为预发布（整合包 0.2.3，兼容 DLL 0.2.2），保留日期修正未再次整轮刷机的验证边界。

@@ -2,15 +2,15 @@
 
 步步高 H1 **V1.41 超级系统恢复程序的 Windows 10 x64 兼容层**。保留官方恢复界面，使用 WinUSB 替代原来的 32 位 WinDriver 驱动，支持在解压目录内自动准备驱动和启动恢复。
 
-当前源码版本：**0.2.2**。适用于已确认的 H1 V1.41 恢复流程；不构成 V2.10/V2.20 降级或其他硬件版本的兼容保证。
+当前整合包版本：**0.2.3**，兼容 DLL 仍为已验证的 **0.2.2**。0.2.3 修正英文构建环境解码官方 RAR 的问题。适用于已确认的 H1 V1.41 恢复流程；不构成 V2.10/V2.20 降级或其他硬件版本的兼容保证。
 
 ## 快速开始
 
 成品由本仓库的 GitHub Releases 分发：
 
-- **版本 Release**：下载 `H1-V1.41-Win10x64-v0.2.2-complete.zip`，完整解压后双击 **`启动恢复.cmd`**。管理员提示由 Windows 正常显示；不需要打开 Zadig 或手动点 Install Driver。
+- **版本 Release**：下载 `H1-V1.41-Win10x64-v0.2.3-complete.zip`，完整解压后双击 **`启动恢复.cmd`**。管理员提示由 Windows 正常显示；不需要打开 Zadig 或手动点 Install Driver。
 - **`official-v1.41` Release**：提供未修改的 `H1-V141-super-recovery.rar`。这是官方闭源原包，CI 下载并校验它，然后与本仓库编译产物整合。
-- `H1-Win10x64-v0.2.2-compatibility.zip` 是兼容层单独包，适合开发和手动替换 DLL；普通用户使用完整 ZIP。
+- `H1-Win10x64-v0.2.3-compatibility.zip` 是兼容层单独包，适合开发和手动替换 DLL；普通用户使用完整 ZIP。
 
 H1 按已验证的方式进入 USB Boot：保持 USB 连接，按住 Shift，轻点 RESET，再松开 Shift。完整包会准备 `601A:4740` 和 `0888:A880` 两组 WinUSB 绑定；普通 USB 磁盘模式使用另一组设备身份。
 

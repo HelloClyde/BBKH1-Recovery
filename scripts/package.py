@@ -20,14 +20,17 @@ def bundle(args):
     extracted=CACHE/'official-v1.41';marker=extracted/'verified-extraction.json'
     if not marker.exists():
         extracted.mkdir(parents=True,exist_ok=True)
-        outer=CACHE/'official-outer';outer.mkdir(exist_ok=True)
         # Do not pick w64devkit's BusyBox tar after the compiler PATH is set.
         tar=Path(os.environ.get('SystemRoot',r'C:\Windows'))/'System32/tar.exe'
         if not tar.is_file():raise FileNotFoundError('Windows bsdtar is required to extract the official RAR.')
-        run([tar,'-xf',archive,'-C',outer])
-        installers=list(outer.rglob('*.exe'))
-        if len(installers)!=1:raise ValueError('Expected exactly one Inno setup in the original RAR')
-        setup=CACHE/'official-setup.exe';copy(installers[0],setup)
+        # The locked RAR contains one setup EXE and its directory entry. Its
+        # names use CP936, which English Windows cannot infer. Stream the sole
+        # file directly into an ASCII path, never creating legacy-named paths.
+        setup=CACHE/'official-setup.exe'
+        with setup.open('wb') as output:
+            run([tar,'--options','hdrcharset=CP936','-xOf',archive],stdout=output)
+        if sha(setup)!=LOCK['official']['setup_sha256']:
+            raise ValueError('Original Inno setup checksum mismatch')
         run([CACHE/'innoextract/innoextract.exe','--extract','--silent','--output-dir',extracted,setup])
     candidates=list(extracted.rglob('super_recover.exe'))
     if len(candidates)!=1:raise ValueError('Expected exactly one official super_recover.exe')

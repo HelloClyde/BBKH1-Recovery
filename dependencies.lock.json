@@ -145,7 +145,8 @@
         "source": "legacy-driver/wdapi901-original.dll",
         "destination": "legacy-driver/wdapi901-original.dll"
       }
-    ]
+    ],
+    "setup_sha256": "17a450fa681ace3b89bc8b4e803e4d996c7b7970d83c991526d0b0cac26447a7"
   },
   "libwdi": {
     "repository": "https://github.com/pbatard/libwdi.git",
