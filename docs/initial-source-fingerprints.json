@@ -1,0 +1,11 @@
+{
+  "src\\bridge\\backup_attributes.h": "7fef9ff7ff8c71bef90c682d6e9733484ada177856b1b1f58fca9fd72c50f3e7",
+  "src\\bridge\\bridge.h": "843f826cf4c0959228a7d3915504c6a2246a3b3e38eadd3209e99e65dad1759c",
+  "src\\bridge\\core.c": "bbf02f4ff8cd6c3bdbf2271105fa84ca37041a8d3e6c37ceede8975e1ddae574",
+  "src\\bridge\\fake_platform.c": "96d797760d3555d37372f731c678066e75124339cc7175e038ff19bddef88b1a",
+  "src\\bridge\\fake_platform.h": "d21429123bc6ead4d3bf248d9f1ed9dd1fd03b3152f2dd71c4bc318ee93ced76",
+  "src\\bridge\\inspect.c": "505559dd346b40bdf17ecaf3021b72c64076d36d1d684bdf01b7834f12b7ebb3",
+  "src\\bridge\\probe.c": "b2eabbee8bd4d789f5b504da1fdebd943952a5c531b3e2b26fab2ebe6768f43a",
+  "src\\driver\\wdi_utf8.c": "2734da6b27e14e42ff10e6482feb0321af421be7c3c62baf83c4502ccaed571f",
+  "src\\installer\\setup.c": "82ec1903f5fa2f938074c610acfc8d7e2b1db09c998c02d4a462530507afbda8"
+}

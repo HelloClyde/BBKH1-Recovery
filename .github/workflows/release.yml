@@ -1,0 +1,85 @@
+name: Build and release H1 recovery
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-2022
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          submodules: recursive
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5
+        with:
+          path: |
+            .cache/*.rar
+            .cache/*.exe
+            .cache/*.zip
+          key: h1-recovery-deps-${{ runner.os }}-${{ hashFiles('dependencies.lock.json') }}
+      - name: Install Python build dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Acquire and verify locked dependencies
+        run: python scripts/build.py bootstrap
+      - name: Build bridge and driver installer from source
+        run: python scripts/build.py build
+      - name: Download official original and integrate
+        run: python scripts/build.py bundle
+      - name: Offline validation only
+        run: python scripts/build.py test
+      - name: Create verified release packages
+        run: python scripts/build.py package
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: h1-recovery-${{ github.sha }}
+          path: dist/*
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: h1-recovery-${{ github.sha }}
+          path: dist
+      - name: Verify downloaded assets
+        working-directory: dist
+        run: sha256sum -c SHA256SUMS.txt
+      - name: Publish these exact CI artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(cat VERSION)"
+          test "$RELEASE_TAG" = "v$version"
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            echo 'Release already exists; refusing to overwrite its assets.' >&2
+            exit 1
+          fi
+          gh release create "$RELEASE_TAG" dist/* --verify-tag --prerelease \
+            --title "H1 Win10 x64 compatibility v$version" \
+            --notes-file "docs/RELEASE-v$version.md"

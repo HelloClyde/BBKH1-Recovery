@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-16",
+  "first_user_info_transaction_passed": true,
+  "full_recovery_completed": true,
+  "normal_boot_confirmed": true,
+  "normal_boot_confirmation": "user confirmed normal system desktop after continuation",
+  "validation_method": "v0.2.1 system flash followed by pinned two-file user-data continuation and original cmd4 finish",
+  "v022_complete_single_run_tested": false,
+  "v022_backup_attribute_fix": "offline instruction tests and guarded original-host verification passed; entire hardware run not repeated",
+  "nand_user_data_files_restored": 2,
+  "additional_nand_erase_commands_during_continuation": 0,
+  "additional_raw_firmware_write_commands_during_continuation": 0,
+  "continuation_out_transfers": 28,
+  "continuation_in_transfers": 54,
+  "finish_command_sent": 4,
+  "device_compatibility_scope": "the connected H1 using official V1.41 recovery; no V2.10/V2.20 downgrade certification"
+}

@@ -1,0 +1,207 @@
+{
+  "schema": 1,
+  "official": {
+    "release": "official-v1.41",
+    "asset": "H1-V141-super-recovery.rar",
+    "sha256": "b1f5f4d886c1c08c7d6f0722581615a7262cfe44b62f1f1e47eef204f5e5e5db",
+    "size": 467351318,
+    "original_url": "http://down.eebbk.net/xzzx/y100/1/@ibox H1 V1.41CJXTHF.rar",
+    "files": [
+      {
+        "sha256": "552e362f329ff6e579478da6f7be6fffcfacf9abb73d3e3a9b9aae8bd066caff",
+        "size": 940,
+        "source": "alldir1.dat",
+        "destination": "alldir1.dat"
+      },
+      {
+        "sha256": "fd2713687d942b9e1ca3724de97108e7ffd77110567b564a5aacd72b76a35b83",
+        "size": 5032,
+        "source": "data0.dat",
+        "destination": "data0.dat"
+      },
+      {
+        "sha256": "31abaf689345cc095d361d05fa26dfbcfe20835e985cd1363cb1144cd07a1d23",
+        "size": 456032,
+        "source": "data1.dat",
+        "destination": "data1.dat"
+      },
+      {
+        "sha256": "564a093f92a8d718b2aefd14bbadb13f91df9ab98ff81103687c3418f9dee05f",
+        "size": 5729656,
+        "source": "data2.dat",
+        "destination": "data2.dat"
+      },
+      {
+        "sha256": "b3c28941ceb057de44d9c322a38bb0f63c62d7ffbd91cf7970964413978f8eb7",
+        "size": 319456,
+        "source": "legacy-driver/difxapi.dll",
+        "destination": "legacy-driver/difxapi.dll"
+      },
+      {
+        "sha256": "807830464eaf73ebeef47ce139e954ab557801d3d69f790cfe17fc206abfd9ca",
+        "size": 195623,
+        "source": "help.chm",
+        "destination": "help.chm"
+      },
+      {
+        "sha256": "c57affe4a3f5d20a6d67c00b6f934fd8e5bec997d084447ed8a2ff2043844e42",
+        "size": 640,
+        "source": "license.txt",
+        "destination": "license.txt"
+      },
+      {
+        "sha256": "cf6dde26218bcde3a057c4839835259106b231e8cce1478a3ebae37f3c2574bb",
+        "size": 941500622,
+        "source": "packet1.dat",
+        "destination": "packet1.dat"
+      },
+      {
+        "sha256": "ac2f54d7f553b33e7c017a25569252921955ddefdb78ced5ecef6835729371cc",
+        "size": 241,
+        "source": "legacy-driver/Reg.bat",
+        "destination": "legacy-driver/Reg.bat"
+      },
+      {
+        "sha256": "7ef39aa7af151529d50e407d1645ae17806eea9226647ad047049196c5b7e88b",
+        "size": 1240064,
+        "source": "super_recover.exe",
+        "destination": "super_recover.exe"
+      },
+      {
+        "sha256": "b69be25a0fbbe5715f9137b097feb7bd38df0e448f5ac175542a7485217d1136",
+        "size": 651760,
+        "source": "SuperOs_Y100_V1.41.bin",
+        "destination": "SuperOs_Y100_V1.41.bin"
+      },
+      {
+        "sha256": "5c7e30ca55f7feb5d918709ee36173c96e4acdf8d886ecba218159707f104c83",
+        "size": 132,
+        "source": "legacy-driver/UnReg.bat",
+        "destination": "legacy-driver/UnReg.bat"
+      },
+      {
+        "sha256": "89f1dba8140fb1bc4f44ea2e47bab8900acae3587fcd139bbe7330f24f56c09a",
+        "size": 4168,
+        "source": "usb_init_64M.bin",
+        "destination": "usb_init_64M.bin"
+      },
+      {
+        "sha256": "2761b4a74156c4b8dd6583d230cad3927d4d2298a1d96033a8f3c171470311be",
+        "size": 4196,
+        "source": "legacy-driver/usb_recover.inf",
+        "destination": "legacy-driver/usb_recover.inf"
+      },
+      {
+        "sha256": "f16dff8fa200a4ada1a6d692ae3de4d143080a21e769e8c50d83bb0e5c4fb681",
+        "size": 2529,
+        "source": "legacy-driver/usbboot.inf",
+        "destination": "legacy-driver/usbboot.inf"
+      },
+      {
+        "sha256": "7e6581b6c124f4c55741b93e1a5023f84295acbbb28773424074a64102b6042b",
+        "size": 5552,
+        "source": "UserInfo.cfg",
+        "destination": "UserInfo.cfg"
+      },
+      {
+        "sha256": "699a0a40e72fa6d3fed2ad24e58bb7a2b5c58a58b58957e1311132b84c72c2af",
+        "size": 7831,
+        "source": "legacy-driver/wd901.cat",
+        "destination": "legacy-driver/wd901.cat"
+      },
+      {
+        "sha256": "f26b3cc01a20f0a86c132e3f6d0fa09fd8e07ab90304af81c73172a6326c2fe0",
+        "size": 131157,
+        "source": "legacy-driver/wdreg.exe",
+        "destination": "legacy-driver/wdreg.exe"
+      },
+      {
+        "sha256": "e655153d972dddc00359abfde04ae71a85bfe87567eed39b5677d056db0d038e",
+        "size": 25705,
+        "source": "legacy-driver/wdreg16.exe",
+        "destination": "legacy-driver/wdreg16.exe"
+      },
+      {
+        "sha256": "20fd7785df2c98f2472aae72e7e9bf0554e47ffbeaa7734456d159bcaaf79eeb",
+        "size": 131165,
+        "source": "legacy-driver/wdreg_gui.exe",
+        "destination": "legacy-driver/wdreg_gui.exe"
+      },
+      {
+        "sha256": "b88a8e205168c75d6c5953adb35dc6d1aafe3b2cdbad9f9ea115b0593207f996",
+        "size": 2683,
+        "source": "legacy-driver/windrvr6.inf",
+        "destination": "legacy-driver/windrvr6.inf"
+      },
+      {
+        "sha256": "2b9e31df3a6392cfe585bbf6ffb292ba8f7e357d574a9dce5c0dd23e14bfc3ad",
+        "size": 186592,
+        "source": "legacy-driver/windrvr6.sys",
+        "destination": "legacy-driver/windrvr6.sys"
+      },
+      {
+        "sha256": "296b5a024fbfc2ad3353dd056b2479c358b5652bf385c606fe73f70538594abe",
+        "size": 114688,
+        "source": "legacy-driver/wdapi901-original.dll",
+        "destination": "legacy-driver/wdapi901-original.dll"
+      }
+    ]
+  },
+  "libwdi": {
+    "repository": "https://github.com/pbatard/libwdi.git",
+    "commit": "9b23b82a2dd1cbffc16d46c212f92c6bf8c0c602",
+    "version": "1.5.1"
+  },
+  "toolchain": {
+    "url": "https://github.com/skeeto/w64devkit/releases/download/v2.11.0/w64devkit-x64-2.11.0.7z.exe",
+    "file": "w64devkit-x64-2.11.0.7z.exe",
+    "sha256": "54c2bb9962e8a30c8270e34c5efc3d5fee579f53087fa7d435b95fbba2af7b2b"
+  },
+  "upx": {
+    "url": "https://github.com/upx/upx/releases/download/v5.0.2/upx-5.0.2-win64.zip",
+    "file": "upx-5.0.2-win64.zip",
+    "sha256": "1cff6d6ee01c404d4a1ae56003056bd4cfa28d0a5cea1d0950daaf872a4facc9"
+  },
+  "zadig": {
+    "url": "https://github.com/pbatard/libwdi/releases/download/v1.5.1/zadig-2.9.exe",
+    "file": "zadig-2.9.exe",
+    "sha256": "4ecaa95df3da3621486a043aef8b3050b8bafe7c901402871e816229ef82039b",
+    "unpacked_sha256": "b53d18545237fae30ac4aa6f4e0b8897cbe69d5309f69d53a3f757ba1048c0d9",
+    "resources": [
+      {
+        "offset": 261224,
+        "size": 1002728,
+        "name": "winusbcoinstaller2.dll",
+        "subdir": "amd64",
+        "creation_time": 1338622526,
+        "sha256": "981a17effddbc20377512ddaec9f22c2b7067e17a3e2a8ccf82bb7bb7b2420b6"
+      },
+      {
+        "offset": 1514984,
+        "size": 157184,
+        "name": "installer_x64.exe",
+        "subdir": ".",
+        "creation_time": 1718283228,
+        "sha256": "609210f38493e245d6d8283914847d3fb19dc0797364d367e5ac2a11e58a6c90"
+      },
+      {
+        "offset": 1672168,
+        "size": 1795952,
+        "name": "WdfCoInstaller01011.dll",
+        "subdir": "amd64",
+        "creation_time": 1345201020,
+        "sha256": "f6fb39a8578f19616570d5a3dc7212c84a9da232b30a03376bbf08f4264fedf2"
+      }
+    ]
+  },
+  "sevenzr": {
+    "url": "https://github.com/ip7z/7zip/releases/download/26.06/7zr.exe",
+    "file": "7zr.exe",
+    "sha256": "e80db2dad715a6c5adabe292d31ed54e11f4e9b99ca349827b50573b175891bc"
+  },
+  "innoextract": {
+    "url": "https://github.com/dscharrer/innoextract/releases/download/1.9/innoextract-1.9-windows.zip",
+    "file": "innoextract-1.9-windows.zip",
+    "sha256": "6989342c9b026a00a72a38f23b62a8e6a22cc5de69805cf47d68ac2fec993065"
+  }
+}
