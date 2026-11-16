@@ -2,6 +2,8 @@
 
 支持 Windows x64。首次构建安装 Git、Python 3.11+，无需系统 tar；可选安装 7-Zip，脚本会在需要时取得固定的便携 7zr。初始化固定子模块：
 
+开发构建目录使用 ASCII 路径，以兼容 MinGW 链接器在英文 Windows 上的路径处理。成品运行目录支持中文和空格；离线入口测试在中文目录运行，编译测试夹具时先使用 ASCII 暂存路径。
+
 ```powershell
 git submodule update --init --recursive
 python -m pip install -r requirements.txt

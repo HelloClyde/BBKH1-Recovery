@@ -58,7 +58,10 @@ for source,dest in [('payload/super_recover.exe','super_recover.exe'),('tools/in
 manifest=('\n'.join(rows)+'\n').encode()
 (fixture/'payload-manifest.tsv').write_bytes(manifest)
 (TEST/'manifest_hash.h').write_text('#define H1_MANIFEST_SHA256 "'+hashlib.sha256(manifest).hexdigest()+'"\n')
-exe=fixture/'tools/H1Setup.exe';compile_setup(CC,TEST,exe)
+# MinGW's linker uses ANSI output paths on English Windows. Compile in the
+# ASCII staging path, then keep the actual runtime test in the Unicode folder.
+compiled_fixture=TEST/'fixture-setup.exe';compile_setup(CC,TEST,compiled_fixture)
+exe=fixture/'tools/H1Setup.exe';shutil.copyfile(compiled_fixture,exe)
 records=[]
 def run(name,args,expected=0,timeout=60):
     r=subprocess.run([str(x) for x in args],cwd=TEST,capture_output=True,timeout=timeout)
